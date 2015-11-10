@@ -3,15 +3,40 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  sum = 0
+  arr.each do |element|
+    sum += element
+  end
+  
+  sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.length == 1
+    return arr[0]
+  end
+  
+  sum = 0
+  arr.sort! do |element1, element2|
+    element2 <=> element1
+  end
+  
+  sum = arr[0] + arr[1]
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  return true if arr.empty? && n == 0
+  
+  arr.sort!
+  for i in 0...arr.length
+  return false if arr[i] > n
+    for j in i+1...arr.length
+      break if arr[i] + arr[j] > n
+      return true if arr[i] + arr[j] == n
+    end
+  end
+  
+  false
 end
 
 # Part 2
